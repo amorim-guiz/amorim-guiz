@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="570" viewBox="0 0 1200 570" role="img" aria-labelledby="title desc">
+  <title id="title">Guilherme Amorim — GitHub profile</title>
+  <desc id="desc">ASCII portrait and neofetch-style profile information for Guilherme Amorim.</desc>
+
+  <style>
+    text {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 14px;
+      fill: #c9d1d9;
+    }
+    .ascii {
+      font-size: 12.5px;
+      fill: #c9d1d9;
+    }
+    .username {
+      font-size: 18px;
+      font-weight: 700;
+      fill: #58a6ff;
+    }
+    .section {
+      font-weight: 700;
+      fill: #58a6ff;
+    }
+    .key {
+      fill: #7ee787;
+    }
+    .value {
+      fill: #c9d1d9;
+    }
+    .muted {
+      fill: #484f58;
+    }
+    .motd {
+      fill: #7ee787;
+    }
+  </style>
+
+  <!-- ASCII portrait -->
+  <text class="ascii" x="18" y="22" xml:space="preserve">
+    <tspan x="18" dy="0">                        . .                               </tspan>
+    <tspan x="18" dy="14.5">                    ..      ...       .                   </tspan>
+    <tspan x="18" dy="14.5">                  ..                                      </tspan>
+    <tspan x="18" dy="14.5">                 ..                                       </tspan>
+    <tspan x="18" dy="14.5">                .... ...----------..    .                 </tspan>
+    <tspan x="18" dy="14.5">               ......---++++++++++--....                  </tspan>
+    <tspan x="18" dy="14.5">              .....-++++++++++++++++-...                  </tspan>
+    <tspan x="18" dy="14.5">             ....-++++++++++++++++++++-.                  </tspan>
+    <tspan x="18" dy="14.5">             ...-+#++++++++++++++++++++-.                 </tspan>
+    <tspan x="18" dy="14.5">              ..##+-...-+++++++++--.--+++.                </tspan>
+    <tspan x="18" dy="14.5">               -#++++-------+------+++--+.                </tspan>
+    <tspan x="18" dy="14.5">               -+.........----..........+                 </tspan>
+    <tspan x="18" dy="14.5">              -#+++....--.++++...-++. ..+.                </tspan>
+    <tspan x="18" dy="14.5">              +##+#-.....-++++....    .-++                </tspan>
+    <tspan x="18" dy="14.5">              #####++++++##++++++----+++++                </tspan>
+    <tspan x="18" dy="14.5">              ######+++-#+###+#+++++++#+++                </tspan>
+    <tspan x="18" dy="14.5">              #######++++++++++++++####+++                </tspan>
+    <tspan x="18" dy="14.5">              +######+++++---++++++####++-                </tspan>
+    <tspan x="18" dy="14.5">               +######+++++++++++++###+++                 </tspan>
+    <tspan x="18" dy="14.5">               .#####+++++++++++++++##++-                 </tspan>
+    <tspan x="18" dy="14.5">                ##########+-++#+++##++++                  </tspan>
+    <tspan x="18" dy="14.5">                 #####+++++++++++++#+++.                  </tspan>
+    <tspan x="18" dy="14.5">              ...#######++++++++++++++-                   </tspan>
+    <tspan x="18" dy="14.5">      .......---+#####+++++++++-+++++++..                 </tspan>
+    <tspan x="18" dy="14.5"> . .-....-------+#####++-------.--+++++....               </tspan>
+    <tspan x="18" dy="14.5">-.#..-+--.----+++#######+-------+++++++.....              </tspan>
+    <tspan x="18" dy="14.5">..++----+##+-+####################+++++.....              </tspan>
+    <tspan x="18" dy="14.5">+-----#############################+++-.....              </tspan>
+    <tspan x="18" dy="14.5">.--#################################++.....               </tspan>
+    <tspan x="18" dy="14.5">+##################################+-......               </tspan>
+    <tspan x="18" dy="14.5">+################################++........               </tspan>
+  </text>
+
+  <!-- Header -->
+  <text class="username" x="515" y="32">amorim@guiz</text>
+  <line x1="515" y1="44" x2="1170" y2="44" stroke="#484f58" stroke-width="1" />
+
+  <!-- System info -->
+  <text class="key" x="515" y="72">OS</text>
+  <text class="value" x="690" y="72">Information Systems @ UniLaSalle RJ</text>
+
+  <text class="key" x="515" y="95">Host</text>
+  <text class="value" x="690" y="95">Leste Telecom</text>
+
+  <text class="key" x="515" y="118">Kernel</text>
+  <text class="value" x="690" y="118">Network Operations Assistant (NOC)</text>
+
+  <text class="key" x="515" y="141">Uptime</text>
+  <text class="value" id="uptime_data" x="690" y="141">23 years, 11 days</text>
+
+  <text class="key" x="515" y="164">IDE</text>
+  <text class="value" x="690" y="164">Visual Studio Code</text>
+
+  <!-- Languages -->
+  <text class="key" x="515" y="202">Language.Programming</text>
+  <text class="value" x="690" y="202">Python, TypeScript, JavaScript, Lua</text>
+
+  <text class="key" x="515" y="225">Language.Spoken</text>
+  <text class="value" x="690" y="225">Portuguese, English</text>
+
+  <!-- GitHub stats -->
+  <text class="section" x="515" y="270">GitHub</text>
+  <line x1="515" y1="279" x2="790" y2="279" stroke="#484f58" stroke-width="1" />
+
+  <text class="key" x="515" y="304">Repositories</text>
+  <text class="value" id="repo_data" x="680" y="304">0</text>
+
+  <text class="key" x="515" y="327">Commits</text>
+  <text class="value" id="commit_data" x="680" y="327">0</text>
+
+  <text class="key" x="515" y="350">Stars</text>
+  <text class="value" id="star_data" x="680" y="350">0</text>
+
+  <text class="key" x="515" y="373">Contributed To</text>
+  <text class="value" id="contrib_data" x="680" y="373">0</text>
+
+  <text class="key" x="515" y="396">Followers</text>
+  <text class="value" id="follower_data" x="680" y="396">0</text>
+
+  <!-- LOC -->
+  <text class="section" x="850" y="270">LOC</text>
+  <line x1="850" y1="279" x2="1170" y2="279" stroke="#484f58" stroke-width="1" />
+
+  <text class="key" x="850" y="304">Lines Added</text>
+  <text class="value" id="loc_add_data" x="1030" y="304">0</text>
+
+  <text class="key" x="850" y="327">Lines Deleted</text>
+  <text class="value" id="loc_del_data" x="1030" y="327">0</text>
+
+  <text class="key" x="850" y="350">Net Lines</text>
+  <text class="value" id="loc_net_data" x="1030" y="350">0</text>
+
+  <!-- Contact -->
+  <text class="section" x="515" y="445">Contact</text>
+  <line x1="515" y1="454" x2="1170" y2="454" stroke="#484f58" stroke-width="1" />
+
+  <text class="key" x="515" y="480">Email.Personal[0]</text>
+  <text class="value" x="690" y="480">guiamorim.1408@gmail.com</text>
+
+  <text class="key" x="515" y="503">Email.Personal[1]</text>
+  <text class="value" x="690" y="503">guiaraujo.1408@gmail.com</text>
+
+  <text class="key" x="515" y="526">Email.Work</text>
+  <text class="value" x="690" y="526">guilherme_araujo@lestetelecom.net.br</text>
+
+  <text class="key" x="930" y="480">LinkedIn</text>
+  <text class="value" x="1035" y="480">Guilherme Amorim</text>
+
+  <text class="key" x="930" y="503">Discord</text>
+  <text class="value" x="1035" y="503">@wtfguiz</text>
+
+  <!-- MOTD -->
+  <text class="key" x="18" y="510">MOTD</text>
+  <text class="motd" x="18" y="535">Fascinated by WebDev and Addicted to GameDev</text>
+</svg>
