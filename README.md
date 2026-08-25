@@ -1,7 +1,7 @@
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="./dark_mode.svg"
+    srcset="./dark_mode_v2.svg"
   >
   <source
     media="(prefers-color-scheme: light)"
@@ -9,6 +9,6 @@
   >
   <img
     alt="Guilherme Amorim GitHub Profile"
-    src="./dark_mode.svg"
+    src="./dark_mode_v2.svg"
   >
 </picture>
