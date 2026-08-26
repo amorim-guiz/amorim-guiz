@@ -411,8 +411,8 @@ def main() -> None:
         "commit_data": format_number(code["commits"]),
         "follower_data": format_number(followers),
         "loc_net_data": format_number(code["net"]),
-        "loc_add_data": format_number(code["additions"]) + "++",
-        "loc_del_data": format_number(code["deletions"]) + "--",
+        "loc_add_data": "+" + format_number(code["additions"]) + "++",
+        "loc_del_data": "-" + format_number(code["deletions"]) + "--",
     }
 
     print("\nProfile stats")
