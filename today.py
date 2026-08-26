@@ -6,6 +6,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -20,33 +21,87 @@ SVG_FILES = [Path("dark_mode.svg"), Path("light_mode.svg")]
 AFFILIATIONS_ALL = ["OWNER", "COLLABORATOR", "ORGANIZATION_MEMBER"]
 
 
-def graphql(query: str, variables: dict) -> dict:
+def graphql(query: str, variables: dict, max_attempts: int = 6) -> dict:
     if not TOKEN:
         raise RuntimeError("GitHub token not found. Set ACCESS_TOKEN or GITHUB_TOKEN.")
 
     payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
-    request = urllib.request.Request(
-        GRAPHQL_URL,
-        data=payload,
-        headers={
-            "Authorization": f"Bearer {TOKEN}",
-            "Content-Type": "application/json",
-            "User-Agent": f"{USERNAME}-profile-updater",
-        },
-        method="POST",
-    )
 
-    try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            result = json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GitHub GraphQL HTTP {exc.code}: {body}") from exc
+    retryable_http_codes = {429, 500, 502, 503, 504}
 
-    if result.get("errors"):
-        raise RuntimeError("GitHub GraphQL error:\n" + json.dumps(result["errors"], indent=2))
+    for attempt in range(1, max_attempts + 1):
+        request = urllib.request.Request(
+            GRAPHQL_URL,
+            data=payload,
+            headers={
+                "Authorization": f"Bearer {TOKEN}",
+                "Content-Type": "application/json",
+                "User-Agent": f"{USERNAME}-profile-updater",
+            },
+            method="POST",
+        )
 
-    return result["data"]
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                result = json.loads(response.read().decode("utf-8"))
+
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+
+            if exc.code in retryable_http_codes and attempt < max_attempts:
+                wait = min(2 ** attempt, 30)
+                print(
+                    f"[retry] GitHub HTTP {exc.code}. "
+                    f"Attempt {attempt}/{max_attempts}; waiting {wait}s..."
+                )
+                time.sleep(wait)
+                continue
+
+            raise RuntimeError(
+                f"GitHub GraphQL HTTP {exc.code}: {body}"
+            ) from exc
+
+        except (urllib.error.URLError, TimeoutError) as exc:
+            if attempt < max_attempts:
+                wait = min(2 ** attempt, 30)
+                print(
+                    f"[retry] Network error: {exc}. "
+                    f"Attempt {attempt}/{max_attempts}; waiting {wait}s..."
+                )
+                time.sleep(wait)
+                continue
+            raise RuntimeError(f"GitHub GraphQL network error: {exc}") from exc
+
+        errors = result.get("errors") or []
+        if errors:
+            messages = " | ".join(str(error.get("message", error)) for error in errors)
+            retryable_graphql = any(
+                keyword in messages.lower()
+                for keyword in (
+                    "timeout",
+                    "timed out",
+                    "internal",
+                    "something went wrong",
+                    "service unavailable",
+                )
+            )
+
+            if retryable_graphql and attempt < max_attempts:
+                wait = min(2 ** attempt, 30)
+                print(
+                    f"[retry] GitHub GraphQL transient error. "
+                    f"Attempt {attempt}/{max_attempts}; waiting {wait}s..."
+                )
+                time.sleep(wait)
+                continue
+
+            raise RuntimeError(
+                "GitHub GraphQL error:\n" + json.dumps(errors, indent=2)
+            )
+
+        return result["data"]
+
+    raise RuntimeError("GitHub GraphQL request failed after all retry attempts.")
 
 
 def plural(value: int, word: str) -> str:
@@ -225,32 +280,39 @@ def save_cache(cache: dict) -> None:
 
 def collect_code_stats(repositories: list[dict]) -> dict:
     old_cache = load_cache().get("repositories", {})
-    new_cache = {}
+    new_cache: dict[str, dict] = {}
 
     total_commits = 0
     total_additions = 0
     total_deletions = 0
 
-    for repository in repositories:
+    for index, repository in enumerate(repositories, start=1):
         full_name = repository["nameWithOwner"]
         owner, name = full_name.split("/", 1)
 
         branch = repository.get("defaultBranchRef")
         branch_commit_count = 0
+
         if branch and branch.get("target"):
-            branch_commit_count = int(branch["target"]["history"]["totalCount"])
+            branch_commit_count = int(
+                branch["target"]["history"]["totalCount"]
+            )
 
         cached = old_cache.get(full_name)
 
-        if cached and int(cached.get("branch_commit_count", -1)) == branch_commit_count:
+        if (
+            cached
+            and int(cached.get("branch_commit_count", -1))
+            == branch_commit_count
+        ):
             stats = {
                 "commits": int(cached.get("commits", 0)),
                 "additions": int(cached.get("additions", 0)),
                 "deletions": int(cached.get("deletions", 0)),
             }
-            print(f"[cache] {full_name}")
+            print(f"[cache] {index}/{len(repositories)} {full_name}")
         else:
-            print(f"[scan ] {full_name}")
+            print(f"[scan ] {index}/{len(repositories)} {full_name}")
             stats = repository_commit_stats(owner, name)
 
         new_cache[full_name] = {
@@ -262,13 +324,18 @@ def collect_code_stats(repositories: list[dict]) -> dict:
         total_additions += stats["additions"]
         total_deletions += stats["deletions"]
 
-    save_cache(
-        {
-            "username": USERNAME,
-            "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            "repositories": new_cache,
-        }
-    )
+        # Save progress after every repository. If GitHub has a transient
+        # failure later, the next run can resume from what was already scanned.
+        save_cache(
+            {
+                "username": USERNAME,
+                "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                "repositories": {
+                    **old_cache,
+                    **new_cache,
+                },
+            }
+        )
 
     return {
         "commits": total_commits,
