@@ -1,18 +1,10 @@
-name: Update profile stats
+name: Profile Stats v2
 
 on:
   workflow_dispatch:
 
   schedule:
-    # 06:15 UTC = 03:15 in Brasilia (UTC-3)
     - cron: "15 6 * * *"
-
-  push:
-    branches:
-      - main
-    paths:
-      - "today.py"
-      - ".github/workflows/update-profile.yml"
 
 permissions:
   contents: write
@@ -23,25 +15,26 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
-      - name: Update GitHub profile data
+      - name: Update profile statistics
         env:
           GITHUB_TOKEN: ${{ github.token }}
           USER_NAME: amorim-guiz
         run: python today.py
 
-      - name: Commit updated profile
+      - name: Commit profile changes
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add dark_mode.svg light_mode.svg cache/profile_stats.json
+          git add dark_mode.svg light_mode.svg cache/
 
           if git diff --cached --quiet; then
             echo "No profile changes to commit."
