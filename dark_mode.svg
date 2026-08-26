@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">Guilherme Amorim — GitHub profile</title>
+  <desc id="desc">ASCII portrait and neofetch-style profile information for Guilherme Amorim.</desc>
+
+  <style>
+    text {
+      font-family: Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13.5px;
+      font-weight: 400;
+    }
+    .ascii { font-size: 11.5px; fill: #e6edf3; }
+    .white { fill: #f0f6fc; }
+    .key { fill: #ffa657; }
+    .value { fill: #79c0ff; }
+    .muted { fill: #6e7681; }
+    .green { fill: #7ee787; }
+    .red { fill: #ff7b72; }
+  </style>
+
+  <rect width="980" height="500" rx="16" fill="#151b23"/>
+
+  <!-- ASCII portrait -->
+  <text class="ascii" x="48" y="50" xml:space="preserve">
+    <tspan x="48" dy="0">                            .                                 </tspan>
+    <tspan x="48" dy="11.35">                      .       ...       .                     </tspan>
+    <tspan x="48" dy="11.35">                    ..                                        </tspan>
+    <tspan x="48" dy="11.35">                  ...                                         </tspan>
+    <tspan x="48" dy="11.35">                 ....   ....-------..      .                  </tspan>
+    <tspan x="48" dy="11.35">                ........----++++++++--.. ...                  </tspan>
+    <tspan x="48" dy="11.35">               ......--+++++++++++++++-...                    </tspan>
+    <tspan x="48" dy="11.35">               ....--+++++++++++++++++++-..                   </tspan>
+    <tspan x="48" dy="11.35">              ....++++##+++++++++++++++++-.                   </tspan>
+    <tspan x="48" dy="11.35">              ...-##+++++++#+++++++++++++++.                  </tspan>
+    <tspan x="48" dy="11.35">               ..++----...-+++++++-....--++-.                 </tspan>
+    <tspan x="48" dy="11.35">                .#++-.......----------------.                 </tspan>
+    <tspan x="48" dy="11.35">                ++-.........----... .-+  ..+                  </tspan>
+    <tspan x="48" dy="11.35">               -#+++-......+++++....+++  ..+-                 </tspan>
+    <tspan x="48" dy="11.35">               +##++-......+++++.....   ..++-                 </tspan>
+    <tspan x="48" dy="11.35">               #####+++++++##+#+++++-++++++++                 </tspan>
+    <tspan x="48" dy="11.35">               ######+++++#+###+#+++++++##+++                 </tspan>
+    <tspan x="48" dy="11.35">               ########++++-+++-++++++###+++-                 </tspan>
+    <tspan x="48" dy="11.35">              .+#######++++---+++++++####+++-                 </tspan>
+    <tspan x="48" dy="11.35">                #######++++#+++++++++####+++                  </tspan>
+    <tspan x="48" dy="11.35">                .######++--++++++-++++###++-                  </tspan>
+    <tspan x="48" dy="11.35">                 +#########+++++#++++#+++++                   </tspan>
+    <tspan x="48" dy="11.35">                 .######+++++++++++++#++++.                   </tspan>
+    <tspan x="48" dy="11.35">                 .+######++++++++++++++++-                    </tspan>
+    <tspan x="48" dy="11.35">           .....--#######+++++++++++++++--.                   </tspan>
+    <tspan x="48" dy="11.35"> .. ........-----+#####++++-+++-+---++++++...                 </tspan>
+    <tspan x="48" dy="11.35">   ......-..----++######++------..-+++++++....                </tspan>
+    <tspan x="48" dy="11.35">.#+.-#+--------++##########++----++++++++-.....               </tspan>
+    <tspan x="48" dy="11.35">.++-----+####+#######################++++-....                </tspan>
+    <tspan x="48" dy="11.35">-----+####+###########################+++......               </tspan>
+    <tspan x="48" dy="11.35">.-+###################################++-.....                </tspan>
+    <tspan x="48" dy="11.35">+####################################++-......                </tspan>
+    <tspan x="48" dy="11.35">-##################################++-........                </tspan>
+  </text>
+
+  <!-- Header -->
+  <text class="white" x="396" y="30">amorim@guiz</text>
+  <text class="muted" x="490" y="30">-------------------------------------------------------------</text>
+
+  <!-- System -->
+  <text class="key" x="396" y="61">- OS:</text>
+  <text class="muted" x="444" y="61">....................</text>
+  <text class="value" x="582" y="61">Information Systems @ UniLaSalle RJ</text>
+
+  <text class="key" x="396" y="82">- Uptime:</text>
+  <text class="muted" x="467" y="82">.................</text>
+  <text class="value" id="uptime_data" x="582" y="82">23 years, 11 days</text>
+
+  <text class="key" x="396" y="103">- Host:</text>
+  <text class="muted" x="452" y="103">...................</text>
+  <text class="value" x="582" y="103">Leste Telecom</text>
+
+  <text class="key" x="396" y="124">- Kernel:</text>
+  <text class="muted" x="467" y="124">.................</text>
+  <text class="value" x="582" y="124">Network Operations Assistant (NOC)</text>
+
+  <text class="key" x="396" y="145">- IDE:</text>
+  <text class="muted" x="444" y="145">....................</text>
+  <text class="value" x="582" y="145">Visual Studio Code</text>
+
+  <!-- Languages -->
+  <text class="key" x="396" y="180">- Languages.Programming:</text>
+  <text class="muted" x="561" y="180">...</text>
+  <text class="value" x="596" y="180">Python, TypeScript, JavaScript, Lua</text>
+
+  <text class="key" x="396" y="201">- Languages.Spoken:</text>
+  <text class="muted" x="529" y="201">.......</text>
+  <text class="value" x="596" y="201">Portuguese, English</text>
+
+  <!-- MOTD -->
+  <text class="green" x="678" y="235" text-anchor="middle">. . . . . . . Fascinated by WebDev and Addicted to GameDev . . . . . . . .</text>
+
+  <!-- Contact -->
+  <text class="white" x="396" y="271">- Contact</text>
+  <text class="muted" x="469" y="271">----------------------------------------------------</text>
+
+  <text class="key" x="412" y="296">Email.Personal[0]:</text>
+  <text class="muted" x="546" y="296">....</text>
+  <text class="value" x="582" y="296">guiamorim.1408@gmail.com</text>
+
+  <text class="key" x="412" y="317">Email.Personal[1]:</text>
+  <text class="muted" x="546" y="317">....</text>
+  <text class="value" x="582" y="317">guiaraujo.1408@gmail.com</text>
+
+  <text class="key" x="412" y="338">Email.Work:</text>
+  <text class="muted" x="498" y="338">...........</text>
+  <text class="value" x="582" y="338">guilherme_araujo@lestetelecom.net.br</text>
+
+  <text class="key" x="412" y="359">LinkedIn:</text>
+  <text class="muted" x="483" y="359">.............</text>
+  <text class="value" x="582" y="359">Guilherme Amorim</text>
+
+  <text class="key" x="412" y="380">Discord:</text>
+  <text class="muted" x="475" y="380">..............</text>
+  <text class="value" x="582" y="380">@wtfguiz</text>
+
+  <!-- GitHub Stats -->
+  <text class="white" x="396" y="417">- GitHub Stats</text>
+  <text class="muted" x="500" y="417">--------------------------------------------</text>
+
+  <text class="key" x="412" y="441">Repos:</text>
+  <text class="muted" x="460" y="441">....</text>
+  <text class="value" id="repo_data" x="494" y="441">0</text>
+  <text class="white" x="516" y="441">{Contributed:</text>
+  <text class="value" id="contrib_data" x="619" y="441">0</text>
+  <text class="white" x="632" y="441">}</text>
+  <text class="muted" x="653" y="441">|</text>
+  <text class="key" x="670" y="441">Stars:</text>
+  <text class="muted" x="718" y="441">....</text>
+  <text class="value" id="star_data" x="752" y="441">0</text>
+
+  <text class="key" x="412" y="462">Commits:</text>
+  <text class="muted" x="475" y="462">..</text>
+  <text class="value" id="commit_data" x="494" y="462">0</text>
+  <text class="muted" x="547" y="462">|</text>
+  <text class="key" x="564" y="462">Followers:</text>
+  <text class="muted" x="643" y="462">...</text>
+  <text class="value" id="follower_data" x="670" y="462">0</text>
+
+  <text class="key" x="412" y="483">Lines of Code on GitHub:</text>
+  <text class="value" id="loc_net_data" x="601" y="483">0</text>
+  <text class="white" x="617" y="483">(</text>
+  <text class="green" id="loc_add_data" x="628" y="483">0++</text>
+  <text class="white" x="657" y="483">,</text>
+  <text class="red" id="loc_del_data" x="669" y="483">0--</text>
+  <text class="white" x="698" y="483">)</text>
+</svg>
