@@ -1,0 +1,52 @@
+name: Update profile stats
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # 06:15 UTC = 03:15 in Brasilia (UTC-3)
+    - cron: "15 6 * * *"
+
+  push:
+    branches:
+      - main
+    paths:
+      - "today.py"
+      - ".github/workflows/update-profile.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  update-profile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Update GitHub profile data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          USER_NAME: amorim-guiz
+        run: python today.py
+
+      - name: Commit updated profile
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add dark_mode.svg light_mode.svg cache/profile_stats.json
+
+          if git diff --cached --quiet; then
+            echo "No profile changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update profile stats"
+          git push
