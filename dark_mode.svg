@@ -67,7 +67,7 @@
 
   <text class="key" x="396" y="82">- Uptime:</text>
   <text class="muted" x="467" y="82">.................</text>
-  <text class="value" id="uptime_data" x="582" y="82">23 years, 2 months, 12 days</text>
+  <text class="value" id="uptime_data" x="582" y="82">23 years, 2 months, 13 days</text>
 
   <text class="key" x="396" y="103">- Host:</text>
   <text class="muted" x="452" y="103">...................</text>
@@ -125,7 +125,7 @@
   <text class="muted" x="460" y="441">....</text>
   <text class="value" id="repo_data" x="494" y="441">7</text>
   <text class="white" x="516" y="441">{Contributed:</text>
-  <text class="value" id="contrib_data" x="619" y="441">1</text>
+  <text class="value" id="contrib_data" x="619" y="441">2</text>
   <text class="white" x="632" y="441">}</text>
   <text class="muted" x="653" y="441">|</text>
   <text class="key" x="670" y="441">Stars:</text>
